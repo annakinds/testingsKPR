@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+    <div>
+        <h1>Shake test</h1>
+        <p class="text1">Tekst 1</p>
+        <p class="text2">Tekst 2 blablablabla</p>
+    </div>
+</Layout>
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    h1 {
+        font-family: baskerville, serif;
+        text-transform: uppercase;
+    }
+
+    .text2 {
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+</style>
+
+<script is:raw>
+    const handleMotion = (e) => {
+        const x = e.accelerationIncludingGravity.x;
+        const y = e.accelerationIncludingGravity.y;
+        const z = e.accelerationIncludingGravity.z;
+
+        const acceleration = Math.sqrt(x * x + y * y + z * z);
+
+        if (acceleration > 15) {
+            console.log("Shake detected!");
+        }
+    };
+
+    window.addEventListener("devicemotion", handleMotion);
+</script>
