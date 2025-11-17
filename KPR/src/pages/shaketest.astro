@@ -25,18 +25,3 @@ import Layout from "../layouts/Layout.astro";
     }
 </style>
 
-<script is:raw>
-    const handleMotion = (e) => {
-        const x = e.accelerationIncludingGravity.x;
-        const y = e.accelerationIncludingGravity.y;
-        const z = e.accelerationIncludingGravity.z;
-
-        const acceleration = Math.sqrt(x * x + y * y + z * z);
-
-        if (acceleration > 15) {
-            console.log("Shake detected!");
-        }
-    };
-
-    window.addEventListener("devicemotion", handleMotion);
-</script>

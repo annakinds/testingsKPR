@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shaking Test</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            transition: background-color 0.5s ease;
+        }
+
+        h1 {
+            font-family: baskerville, serif;
+            text-transform: uppercase;
+        }
+
+        .text2 {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            color: #ff0000;
+        }
+
+        #log {
+            white-space: pre-wrap;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Shake test</h1>
+        <p class="text1">Tekst 1</p>
+        <p class="text2">Tekst 2 blablablabla</p>
+        <div id="log"></div>
+    </div>
+
+    <script>
+        console.log("Script loaded");
+
+        // Elementen
+       const text2 = document.querySelector(".text2");
+        const bg = document.body;
+
+        // Drempel voor detectie van beweging
+        const threshold = 1; // Pas dit aan naar gevoeligheid
+
+        const handleMotionEvent = (event) => {
+            const x = event.accelerationIncludingGravity.x;
+            const y = event.accelerationIncludingGravity.y;
+            const z = event.accelerationIncludingGravity.z;
+
+            // Bereken totale beweging
+            const totalAcceleration = Math.sqrt(x * x + y * y + z * z);
+
+            if (totalAcceleration > threshold) {
+                bg.style.backgroundColor = "red";
+                text2.textContent = "Beweging gedetecteerd!";
+            } else {
+                bg.style.backgroundColor = "white";
+                text2.textContent = "Geen beweging";
+            }
+        }
+
+        window.addEventListener("devicemotion", handleMotionEvent);
+
+
+        // // Shake instellingen
+        // let lastShakeTime = 0;
+        // const shakeThreshold = 12; // pas aan indien nodig
+
+        // // Shake detectie
+        // function handleMotion(event) {
+        //     const acc = event.accelerationIncludingGravity;
+        //     if (!acc) return; // veiligheid
+
+        //     const strength = Math.sqrt(acc.x ** 2 + acc.y ** 2 + acc.z ** 2);
+        //     log(`acceleration: ${strength.toFixed(2)}`);
+
+        //     if (strength > shakeThreshold) {
+        //         const now = Date.now();
+        //         if (now - lastShakeTime > 500) {
+        //             lastShakeTime = now;
+        //             onShake();
+        //         }
+        //     }
+        // }
+
+        // // Wat er gebeurt bij shake
+        // function onShake() {
+        //     log("SCHUDDEEEEEN! 🎉");
+        //     text2.style.opacity = "1";
+        //     bg.style.backgroundColor = "#ff0000";
+        // }
+
+        // // Check of DeviceMotionEvent bestaat (veilig voor iOS/Android)
+        // if (typeof DeviceMotionEvent !== "undefined") {
+        //     if (typeof DeviceMotionEvent.requestPermission === "function") {
+        //         // iOS 13+
+        //         DeviceMotionEvent.requestPermission()
+        //             .then(response => {
+        //                 if (response === "granted") {
+        //                     window.addEventListener("devicemotion", handleMotion);
+        //                 } else {
+        //                     alert("Toestemming geweigerd voor motion sensors");
+        //                 }
+        //             })
+        //             .catch(console.error);
+        //     } else {
+        //         // Android / oudere iOS
+        //         window.addEventListener("devicemotion", handleMotion);
+        //     }
+        // } else {
+        //     alert("DeviceMotionEvent wordt niet ondersteund op deze browser");
+        // }
+    </script>
+</body>
+<script src="./index.js"></script>
+</html>
