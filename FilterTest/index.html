@@ -12,7 +12,7 @@
             <li class="label label2">Label 2</li>
             <li class="label label3">Label 3 longer label</li>
             <li class="label label4">Label 4</li>
-            <li class="refresh">Refresh</li>
+            <li class="refresh"><button>Refresh</button></li>
             <li class="click"><button>Take picture</button></li>
         </ul>
         <video id="camera" width="400" height="600" autoplay playsinline></video>
@@ -22,7 +22,6 @@
 </html>
 <style>
      .filter {
-        border: .1rem solid black;
         width: 30rem;
         display: grid;
         grid-template-columns: auto;
@@ -84,9 +83,6 @@
         justify-self: center;
         align-self: end;
         margin-right: 2rem;
-        background-color: gray;
-        padding: 1rem;
-        border-radius: 1rem;
      }
 
     .click {
@@ -119,4 +115,38 @@
         .catch(error => {
             console.error("Camera error:", error);
         });
+
+    labels = [
+        "creatief",
+        "vriendelijk",
+        "ambitieus",
+        "geduldig",
+        "avontuurlijk",
+        "analytisch",
+        "optimistisch",
+        "zelfverzekerd",
+        "zorgzaam",
+        "loyaal",
+        "introvert",
+        "extraverte",
+        "empatisch",
+        "spontaan",
+        "nauwkeurig",
+        "dapper",
+        "rustig",
+        "enthousiast",
+        "eigenwijs",
+        "betrouwbaar"
+    ]
+
+    const refresh = document.querySelector(".refresh button");
+    refresh.addEventListener("click", () => {
+        const labelElements = document.querySelectorAll(".label");
+        labelElements.forEach(label => {
+            const randomIndex = Math.floor(Math.random() * labels.length);
+            label.textContent = labels[randomIndex];
+        });
+    });
+
+    
 </script>
