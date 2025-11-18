@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filter Test</title>
 </head>
+
 <body>
-    <div class="filter">
+    <section class="filter">
         <ul class="labels">
             <li class="label label1">Label 1 long label</li>
             <li class="label label2">Label 2</li>
@@ -14,21 +16,25 @@
             <li class="label label4">Label 4</li>
             <li class="refresh"><button>Refresh</button></li>
             <li class="click"><button>Take picture</button></li>
+            <li class="link"><a href="">Your artwork</a></li>
         </ul>
-        <video id="camera" width="400" height="600" autoplay playsinline></video>
+        <video id="camera" autoplay playsinline></video>
+        <img id="photo" alt="Your photo" />
 
-    </div>
+    </section>
 </body>
+
 </html>
+
 <style>
-     .filter {
+    .filter {
         width: 30rem;
         display: grid;
         grid-template-columns: auto;
         grid-template-rows: auto;
-     }
+    }
 
-     .labels {
+    .labels {
         grid-column: 1;
         grid-row: 1;
         z-index: 2;
@@ -37,116 +43,129 @@
         display: grid;
         grid-template-columns: auto;
         grid-template-rows: 1fr 1fr 4fr 1fr 1fr 1fr 1fr;
+    }
 
-     }
-
-     .label {
+    .label {
         background-color: red;
         padding: 1rem;
         border-radius: 1rem;
         width: fit-content;
         height: fit-content;
-     }
+    }
 
-     .label1 {
-        grid-column: 1;
+    .label1 {
         grid-row: 1;
         justify-self: start;
         align-self: start;
-     }
+    }
 
-     .label2 {
-        grid-column: 1;
+    .label2 {
         grid-row: 2;
         justify-self: end;
         align-self: center;
         margin-right: 2rem;
-     }
+    }
 
-     .label3 {
-        grid-column: 1;
+    .label3 {
         grid-row: 4;
         justify-self: center;
         align-self: center;
-     }
+    }
 
-     .label4 {
-        grid-column: 1;
+    .label4 {
         grid-row: 5;
         justify-self: start;
         align-self: end;
-     }
+    }
 
-     .refresh {
-        grid-column: 1;
+    .refresh {
         grid-row: 6;
         justify-self: center;
         align-self: end;
         margin-right: 2rem;
-     }
+    }
 
     .click {
-        grid-column: 1;
         grid-row: 7;
         justify-self: center;
         align-self: end;
     }
 
-     #camera {
+    /* Camera + foto exact dezelfde grootte */
+    #camera,
+    #photo {
         grid-column: 1;
         grid-row: 1;
         z-index: 1;
-        width: 30rem;        /* phone width */
-        height: 50rem;       /* phone height */
-        object-fit: cover;   /* fills the space like a phone camera */
-        border-radius: 20px; /* rounded corners like a phone */
+        width: 30rem;
+        height: 50rem;
+        object-fit: cover;
+        border-radius: 20px;
         background: black;
-     }
-</style>
-<script>
-    // Select the video element
-    const video = document.getElementById("camera");
+    }
 
-    // Ask for camera access
-    navigator.mediaDevices.getUserMedia({ video: true })
+    /* Foto eerst verbergen */
+    #photo {
+        display: none;
+    }
+
+    .link {
+        grid-column: 1;
+        grid-row: 7;
+        justify-self: center;
+        align-self: center;
+        display: none;
+    }
+
+</style>
+
+<script>
+    const video = document.getElementById("camera");
+    const photo = document.getElementById("photo");
+
+    // Start camera
+    navigator.mediaDevices.getUserMedia({
+        video: { width: { ideal: 720 }, height: { ideal: 1280 } }
+    })
         .then(stream => {
-            video.srcObject = stream; // Show camera stream
+            video.srcObject = stream;
         })
         .catch(error => {
             console.error("Camera error:", error);
         });
 
-    labels = [
-        "creatief",
-        "vriendelijk",
-        "ambitieus",
-        "geduldig",
-        "avontuurlijk",
-        "analytisch",
-        "optimistisch",
-        "zelfverzekerd",
-        "zorgzaam",
-        "loyaal",
-        "introvert",
-        "extraverte",
-        "empatisch",
-        "spontaan",
-        "nauwkeurig",
-        "dapper",
-        "rustig",
-        "enthousiast",
-        "eigenwijs",
-        "betrouwbaar"
-    ]
+    // Labels array
+    const labels = [
+        "creatief", "vriendelijk", "ambitieus", "geduldig", "avontuurlijk",
+        "analytisch", "optimistisch", "zelfverzekerd", "zorgzaam", "loyaal",
+        "introvert", "extraverte", "empatisch", "spontaan", "nauwkeurig",
+        "dapper", "rustig", "enthousiast", "eigenwijs", "betrouwbaar"
+    ];
 
-    const refresh = document.querySelector(".refresh button");
+    // Refresh button
+    const refresh = document.querySelector(".refresh button")
     refresh.addEventListener("click", () => {
-        const labelElements = document.querySelectorAll(".label");
-        labelElements.forEach(label => {
-            const randomIndex = Math.floor(Math.random() * labels.length);
-            label.textContent = labels[randomIndex];
+        document.querySelectorAll(".label").forEach(label => {
+            const r = Math.floor(Math.random() * labels.length);
+            label.textContent = labels[r];
         });
     });
 
-    
+    // Take picture button
+    const click = document.querySelector(".click button");
+    click.addEventListener("click", () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        photo.src = canvas.toDataURL("image/png");
+        photo.style.display = "block"; 
+        video.style.display = "none";
+        refresh.style.display = "none";
+        click.style.display = "none";
+        document.querySelector(".link").style.display = "block";
+    });
 </script>
