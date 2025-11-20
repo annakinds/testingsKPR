@@ -1,0 +1,72 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f0f0f0;
+    overflow: hidden;
+    margin: 0;
+}
+
+#cardContainer {
+    position: relative;
+    width: 300px;
+    height: 400px;
+}
+
+.card {
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-size: 3rem;
+    font-weight: bold;
+    user-select: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    will-change: transform, opacity;
+}
+
+.card[data-i="10"] {
+    background: #b2df8a;
+}
+
+.card[data-i="9"] {
+    background: #a6cee1;
+}
+
+.card[data-i="8"] {
+    background: #1f78b4;
+}
+
+.card[data-i="7"] {
+    background: #33a02b;
+}
+
+.card[data-i="6"] {
+    background: #fc9a99;
+}
+
+.card[data-i="5"] {
+    background: #e21a1c;
+}
+
+.card[data-i="4"] {
+    background: #fdbe70;
+}
+
+.card[data-i="3"] {
+    background: #ff7f00;
+}
+
+.card[data-i="2"] {
+    background: #cab2d6;
+}
+
+.card[data-i="1"] {
+    background: #6a3d9a;
+}
+
+.card:not(:last-child) {
+    top: 5px;
+}
