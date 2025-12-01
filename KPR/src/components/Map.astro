@@ -71,21 +71,37 @@ import "leaflet/dist/leaflet.css";
 <style>
     :global(.leaflet-popup-content-wrapper) {
         background-color: #1b1b1b;
+        width: 16.9375rem;
+        height: 22.375rem;
     }
 
     :global(.leaflet-popup-content) {
-        font-family: Arial, sans-serif;
-        padding: 10px;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
     }
 
     :global(.leaflet-popup-content b) {
-        font-size: 16px;
-        color: #ffffff;
+        color: #fff;
+        text-align: center;
+        font-family: Obviously;
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 560;
+        line-height: normal;
     }
 
     :global(.leaflet-popup-content i) {
-        font-size: 14px;
-        color: #ffffff;
+        color: var(--White, #f7fcfd);
+        font-family: Obviously;
+        font-size: 2.5rem;
+        font-style: normal;
+        font-weight: 450;
+        height: 3.625rem;
+        justify-content: center;
+        background-color: #ff6249;
+        padding-left: 2rem;
+        padding-right: 2rem;
     }
 
     :global(.leaflet-popup-tip) {
