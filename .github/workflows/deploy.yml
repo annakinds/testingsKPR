@@ -25,7 +25,7 @@ jobs:
         with: 
           node-version: 22
           package-manager: npm
-          path: behindthelabel
+          path: testingsKPR
         # env:
           # PUBLIC_POKEAPI: 'https://pokeapi.co/api/v2' # Use single quotation marks for the variable value. (optional)
 
