@@ -13,6 +13,8 @@ import "leaflet/dist/leaflet.css";
         attribution: "© OpenStreetMap",
     }).addTo(map);
 
+    let selectedMarker = 0;
+
     fetch("/testingsKPR//data/KPR+Kortrijk.geojson")
         .then((r) => r.json())
         .then((data) => {
@@ -32,6 +34,28 @@ import "leaflet/dist/leaflet.css";
                         popup += `<br><i>${feature.properties.description}</i>`;
                     }
                     layer.bindPopup(popup);
+
+                    layer.on("click", () => {
+                        if (selectedMarker) {
+                            selectedMarker.setIcon(
+                                L.icon({
+                                    iconUrl: "/testingsKPR/marker__orange.svg",
+                                    iconSize: [32, 32],
+                                    iconAnchor: [16, 32],
+                                    popupAnchor: [0, -32],
+                                }),
+                            );
+                        }
+                        selectedMarker = layer;
+                        layer.setIcon(
+                            L.icon({
+                                iconUrl: "/testingsKPR/marker__yellow.svg",
+                                iconSize: [32, 32],
+                                iconAnchor: [16, 32],
+                                popupAnchor: [0, -32],
+                            }),
+                        );
+                    });
                 },
             }).addTo(map);
         });
