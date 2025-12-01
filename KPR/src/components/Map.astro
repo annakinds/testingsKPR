@@ -33,8 +33,8 @@ import "leaflet/dist/leaflet.css";
                 },
                 onEachFeature(feature, layer) {
                     let popup = `<b>${feature.properties.name}</b>`;
-                    if (feature.properties.description) {
-                        popup += `<br><i>${feature.properties.description}</i>`;
+                    if (feature.properties.location) {
+                        popup += `<br><i>${feature.properties.location}</i>`;
                     }
                     layer.bindPopup(popup);
 
@@ -67,3 +67,28 @@ import "leaflet/dist/leaflet.css";
             }).addTo(map);
         });
 </script>
+
+<style>
+    :global(.leaflet-popup-content-wrapper) {
+        background-color: #1b1b1b;
+    }
+
+    :global(.leaflet-popup-content) {
+        font-family: Arial, sans-serif;
+        padding: 10px;
+    }
+
+    :global(.leaflet-popup-content b) {
+        font-size: 16px;
+        color: #ffffff;
+    }
+
+    :global(.leaflet-popup-content i) {
+        font-size: 14px;
+        color: #ffffff;
+    }
+
+    :global(.leaflet-popup-tip) {
+        background-color: #1b1b1b;
+    }
+</style>
