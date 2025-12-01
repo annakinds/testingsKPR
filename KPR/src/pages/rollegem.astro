@@ -1,72 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Dialogue from "../components/Dialogue.jsx";
-
-const dialogue = [
-    {
-        id: 0,
-        question:
-            "Hey, er moet mij iets van het hart. Zoals je ziet zit ik vast in een kooi. Het is net alsof ik mezelf niet kan zijn. Herken je dat?",
-        options: [
-            { text: "Ja, eigenlijk wel", nextId: 1 },
-            { text: "Nee, helemaal niet", nextId: 1 },
-        ],
-    },
-    {
-        id: 1,
-        question:
-            "Wil jij me de weg wijzen naar buiten? Wat denk je dat me kan bevrijden?",
-        options: [
-            { text: "Mexicaans dansen", nextId: 2 },
-            { text: "Jongleren", nextId: 3 },
-            { text: "Bloemen schikken", nextId: 3 },
-        ],
-    },
-    {
-        id: 2,
-        question:
-            "Dankje, nu zullen mijn prachtige, kleurrijke vogels zich ook vrij voelen en zingen voor mij terwijl ik dans. Kan ik iets voor je terug doen?",
-        options: [
-            { text: "Waarom zijn de vogels zo kleurrijk?", nextId: 4 },
-            { text: "Waar gaat jouw geld naartoe?", nextId: 5 },
-            { text: "Hoe kan ik me vrij voelen?", nextId: 6 },
-        ],
-    },
-    {
-        id: 3,
-        question:
-            "Misschien is dit wel jouw weg naar vrijheid, maar voor mij helaas niet. Probeer het opnieuw",
-        options: [
-            { text: "Mexicaans dansen", nextId: 2 },
-            { text: "Jongleren", nextId: 3 },
-            { text: "Bloemen schikken", nextId: 3 },
-        ],
-    },
-    {
-        id: 4,
-        question:
-            "De artieste die mij inkleurde is een mexicaanse dame die haar vrijheid vond in de felle kleuren van haar roots.",
-        options: [],
-    },
-    {
-        id: 5,
-        question:
-            "Maak een wandeling door deze stad en ontdek nog meer kunstwerken en laat je inspireren!",
-        options: [],
-    },
-    {
-        id: 6,
-        question:
-            "Wel ik benuttig mijn geld nuttig. Mijn geld gaat namelijk naar een goed doel voor kinderen. Nu ben je pas fier op mij hé. Dit geeft me trouwens ook heel veel vrijheid gevoel dat ik zoiets kan doen.",
-        options: [],
-    },
-];
 ---
 
 <Layout>
     <div>
         <h1>Rollegem</h1>
-        <Dialogue dialogue={dialogue} client:load />
     </div>
 </Layout>
 
