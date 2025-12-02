@@ -44,6 +44,7 @@ import "leaflet/dist/leaflet.css";
 
                     layer.on("click", () => {
                         if (selectedMarker) {
+                            const isFeatured = feature.properties.featured;
                             const wasFeatured =
                                 selectedMarker.feature.properties.featured;
                             selectedMarker.setIcon(
@@ -51,9 +52,13 @@ import "leaflet/dist/leaflet.css";
                                     iconUrl: wasFeatured
                                         ? "/testingsKPR/marker__yellow.svg"
                                         : "/testingsKPR/marker__gray.svg",
-                                    iconSize: [32, 32],
-                                    iconAnchor: [16, 32],
-                                    popupAnchor: [0, -32],
+                                    iconSize: isFeatured ? [32, 32] : [24, 24],
+                                    iconAnchor: isFeatured
+                                        ? [16, 32]
+                                        : [12, 24],
+                                    popupAnchor: isFeatured
+                                        ? [0, -32]
+                                        : [0, -24],
                                 }),
                             );
                         }
