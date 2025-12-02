@@ -135,4 +135,11 @@ import "leaflet/dist/leaflet.css";
         outline: 5px solid #d4f75f;
         border: 1.5px solid #1b1b1b;
     }
+
+    :global(.leaflet-tile) {
+        filter: grayscale(100%) contrast(95%) brightness(95%);
+    }
+    :global(.leaflet-container a.leaflet-popup-close-button){
+        color: #1b1b1b;
+     }
 </style>
