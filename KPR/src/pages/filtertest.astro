@@ -1,0 +1,109 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+    <section class="filter">
+        <ul class="labels">
+            <li class="label label1">Label 1 long label</li>
+            <li class="label label2">Label 2</li>
+            <li class="label label3">Label 3 longer label</li>
+            <li class="label label4">Label 4</li>
+            <li class="refresh"><button>Refresh</button></li>
+            <li class="click"><button>Take picture</button></li>
+            <li class="link"><a href="">Your artwork</a></li>
+        </ul>
+        <video id="camera" autoplay playsinline></video>
+        <img id="photo" alt="Your photo" />
+    </section>
+</Layout>
+<style>
+    .filter {
+        width: 30rem;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+    }
+
+    .labels {
+        grid-column: 1;
+        grid-row: 1;
+        z-index: 2;
+        font-size: 2rem;
+        list-style: none;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: 1fr 1fr 4fr 1fr 1fr 1fr 1fr;
+    }
+
+    .label {
+        background-color: red;
+        padding: 1rem;
+        border-radius: 1rem;
+        width: fit-content;
+        height: fit-content;
+    }
+
+    .label1 {
+        grid-row: 1;
+        justify-self: start;
+        align-self: start;
+    }
+
+    .label2 {
+        grid-row: 2;
+        justify-self: end;
+        align-self: center;
+        margin-right: 2rem;
+    }
+
+    .label3 {
+        grid-row: 4;
+        justify-self: center;
+        align-self: center;
+    }
+
+    .label4 {
+        grid-row: 5;
+        justify-self: start;
+        align-self: end;
+    }
+
+    .refresh {
+        grid-row: 6;
+        justify-self: center;
+        align-self: end;
+        margin-right: 2rem;
+    }
+
+    .click {
+        grid-row: 7;
+        justify-self: center;
+        align-self: end;
+    }
+
+    #camera,
+    #photo {
+        grid-column: 1;
+        grid-row: 1;
+        z-index: 1;
+        width: 30rem;
+        height: 50rem;
+        object-fit: cover;
+        border-radius: 20px;
+        background: black;
+    }
+
+    #photo {
+        display: none;
+    }
+
+    .link {
+        grid-column: 1;
+        grid-row: 7;
+        justify-self: center;
+        align-self: center;
+        display: none;
+    }
+</style>
+
