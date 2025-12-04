@@ -38,7 +38,7 @@ const moveDrag = (x) => {
 const endDrag = (x) => {
     if (!isDragging || !currentCard) return;
     const dx = x - startX;
-    const swipe = Math.abs(dx) > 50;
+    const swipe = Math.abs(dx) > 10;
     currentCard.style.transition = "transform .4s, opacity .4s";
 
     if (swipe) {
