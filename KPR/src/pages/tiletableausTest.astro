@@ -1,0 +1,130 @@
+---
+import "../styles/reset.css";
+import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import tile from "../assets/tiletableau.png";
+import Map from "../components/Map.astro";
+---
+
+<Layout>
+    <div id="detail" class="detail peel-container">
+        <div class="peel-rect" id="peelRect">
+            <section class="start">
+                <h1 class="start__title">
+                    What is hiding behind the labels of Tile Tableaus?
+                </h1>
+                <Image
+                    class="image"
+                    src={tile}
+                    alt="Tile tableau from Aalbeke"
+                />
+                <p class="start__cta">Shake the labels off</p>
+                <div class="corner-square"></div>
+            </section>
+            <section class="chapters peel-fold">
+                <div class="image-wrapper">
+                    <Image
+                        class="image"
+                        src={tile}
+                        alt="Tile tableau from Aalbeke"
+                    />
+                </div>
+            </section>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .detail {
+        background-color: var(--primary-color);
+        max-width: 100%;
+        position: relative;
+    }
+
+    .start {
+        background-color: var(--black);
+        padding-top: 5rem;
+    }
+
+    .start__title {
+        color: var(--white);
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .start__cta {
+        color: var(--white);
+        text-align: center;
+        font-size: 1.25rem;
+        margin-top: 5rem;
+    }
+
+    .chapter {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        padding: 4rem 0;
+    }
+
+    .image-wrapper {
+        position: sticky;
+        top: 15vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        pointer-events: none;
+    }
+
+    .image {
+        max-width: 25rem;
+        width: 90%;
+        height: auto;
+        border: 0.5rem solid var(--white);
+        margin-top: 10vh;
+        display: flex;
+        justify-self: center;
+    }
+
+    .peel-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .peel-rect {
+        width: 100%;
+        height: 100%;
+        background: var(--black);
+        position: relative;
+        /* overflow: hidden; */
+    }
+
+    .peel-fold {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--primary-color);
+        transform-origin: bottom right;
+        /* transform: rotateX(90deg); */
+        pointer-events: none;
+    }
+
+    .corner-square {
+        display: flex;
+        justify-self: end;
+        width: 5rem;
+        height: 5rem;
+        margin-top: 10rem;
+        background: linear-gradient(
+            to top left,
+            var(--primary-color) 50%,
+            var(--secondary-color) 50%
+        );
+    }
+</style>

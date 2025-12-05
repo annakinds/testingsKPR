@@ -1,0 +1,66 @@
+:root {
+    --primary-color: #5756D6;
+    --secondary-color: #FF6249;
+    --accent-color: #D4F75F;
+    --black: #1B1B1B;
+    --white: #F7FCFD;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    width: 100%;
+    background-color: var(--primary-color);
+    overflow-x: hidden;
+    /* overflow-x: hidden; */
+}
+
+#map {
+    height: 100vh;
+    width: 100%;
+}
+
+h1 {
+    font-family: "obviously", sans-serif;
+}
+
+h2 {
+    font-family: "obviously", sans-serif;
+}
+
+.h2__highlight {
+    color: var(--primary-color);
+}
+
+.button-wrapper {
+    background-color: var(--accent-color);
+    padding: 1rem 0.3rem;
+    width: fit-content;
+    margin: 1rem;
+}
+
+.button {
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding: 0.3rem 0.5rem;
+    border: 0.1rem solid var(--black);
+    text-decoration: none;
+    color: var(--black);
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.blue {
+    color: var(--primary-color);
+}
+
+.hidden {
+    display: none !important;
+}
