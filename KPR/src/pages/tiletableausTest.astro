@@ -127,4 +127,18 @@ import Map from "../components/Map.astro";
             var(--secondary-color) 50%
         );
     }
+
+    .peel-container {
+  perspective: 1000px; 
+}
+
+.peel-fold {
+  transform-style: preserve-3d;
+  transform-origin: top right; 
+  backface-visibility: hidden;
+}
+
+.peel-rect {
+  cursor: pointer;
+}
 </style>
