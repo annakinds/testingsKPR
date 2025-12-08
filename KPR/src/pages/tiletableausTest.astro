@@ -10,26 +10,26 @@ import Map from "../components/Map.astro";
 <Layout>
     <div id="detail" class="detail peel-container">
         <div class="peel-rect" id="peelRect">
-            <section class="start">
-                <h1 class="start__title">
-                    What is hiding behind the labels of Tile Tableaus?
-                </h1>
+            <div class="image-wrapper">
                 <Image
                     class="image"
                     src={tile}
                     alt="Tile tableau from Aalbeke"
                 />
-                <p class="start__cta">Shake the labels off</p>
-                <div class="corner-square"></div>
-            </section>
+            </div>
             <section class="chapters peel-fold">
-                <div class="image-wrapper">
+                <section class="start">
+                    <h1 class="start__title">
+                        What is hiding behind the labels of Tile Tableaus?
+                    </h1>
                     <Image
                         class="image"
                         src={tile}
                         alt="Tile tableau from Aalbeke"
                     />
-                </div>
+                    <p class="start__cta">Shake the labels off</p>
+                    <div class="corner-square"></div>
+                </section>
             </section>
         </div>
     </div>
@@ -93,13 +93,15 @@ import Map from "../components/Map.astro";
         width: 100%;
         height: 100%;
         position: relative;
+        z-index: 100;
     }
 
     .peel-rect {
         width: 100%;
         height: 100%;
-        background: var(--black);
-        position: relative;
+        background: var(--primary-color);
+        position: absolute;
+        z-index: 1;
         /* overflow: hidden; */
     }
 
@@ -110,9 +112,10 @@ import Map from "../components/Map.astro";
         width: 100%;
         height: 100%;
         background: var(--primary-color);
-        transform-origin: bottom right;
+        transform-origin: bottom left;
         /* transform: rotateX(90deg); */
         pointer-events: none;
+        z-index: 20;
     }
 
     .corner-square {
@@ -127,18 +130,4 @@ import Map from "../components/Map.astro";
             var(--secondary-color) 50%
         );
     }
-
-    .peel-container {
-  perspective: 1000px; 
-}
-
-.peel-fold {
-  transform-style: preserve-3d;
-  transform-origin: top right; 
-  backface-visibility: hidden;
-}
-
-.peel-rect {
-  cursor: pointer;
-}
 </style>
