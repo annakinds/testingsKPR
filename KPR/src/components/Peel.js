@@ -6,7 +6,7 @@ const rect = document.querySelector(".peel-rect");
 let isOpen = false;
 
 gsap.set(fold, {
-  transformOrigin: "top right",
+  transformOrigin: "top left",
   rotateY: 0,
   xPercent: 0,
   yPercent: 0,
@@ -18,9 +18,9 @@ rect.addEventListener("click", () => {
 
   if (isOpen) {
     gsap.to(fold, {
-      rotateY: -95,
-      xPercent: 25,
-      yPercent: -10,
+      rotateY: 95,
+      xPercent: -25,
+      yPercent: -95,
       duration: 0.9,
       ease: "power3.out",
     });
