@@ -10,7 +10,6 @@ gsap.set(fold, {
   rotateY: 0,
   xPercent: 0,
   yPercent: 0,
-  zIndex: 20,
 });
 
 rect.addEventListener("click", () => {
