@@ -35,11 +35,32 @@ import "leaflet/dist/leaflet.css";
                     layer.feature = feature;
                     const coords = feature.geometry.coordinates;
                     const routeUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}`;
-                    let popup = `<b>${feature.properties.name}</b>`;
-                    if (feature.properties.location) {
-                        popup += `<br><i>${feature.properties.location}</i>`;
-                    }
-                    popup += `<br><a href="${routeUrl}" target="_blank" class="route-button">See route</a>`;
+
+                    let popup = `
+                     <div class="card">
+                     
+                         <div class="card-header">
+                             ${feature.properties.location || ""}
+                         </div>
+                     
+                         <div class="card-body">
+                     
+                             ${
+                                 feature.properties.image
+                                     ? `<img src="${feature.properties.image}" class="card-image" />`
+                                     : ""
+                             }
+                     
+                             <div class="card-title">${feature.properties.name}</div>
+                     
+                             <a href="${routeUrl}" target="_blank" class="card-button">
+                                 See route
+                             </a>
+                         </div>
+                     
+                     </div>
+                     `;
+
                     layer.bindPopup(popup);
 
                     layer.on("click", () => {
@@ -78,68 +99,73 @@ import "leaflet/dist/leaflet.css";
 </script>
 
 <style>
+    :global(.card) {
+        width: 17rem;
+        background: #1b1b1b;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        padding-bottom: 1rem;
+        font-family: Obviously, sans-serif;
+    }
+
+    :global(.card-header) {
+        background: #ff6249;
+        color: white;
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 560;
+        padding: 0.7rem 0;
+    }
+
+    :global(.card-body) {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    :global(.card-image) {
+        width: 100%;
+        height: 10rem;
+        object-fit: contain;
+        margin-bottom: 1rem;
+    }
+
+    :global(.card-title) {
+        color: white;
+        font-size: 2rem;
+        font-weight: 560;
+        margin-bottom: 1rem;
+    }
+
+    :global(.card-button) {
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        background: #d4f75f;
+        border: 2px solid #1b1b1b;
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #1b1b1b;
+        text-decoration: none;
+        outline: 5px solid #d4f75f;
+        border-radius: 0.25rem;
+    }
+
     :global(.leaflet-popup-content-wrapper) {
-        background-color: #1b1b1b;
-        width: 16.9375rem;
-        height: 22.375rem;
+        background: transparent !important;
+        box-shadow: none !important;
+        border-radius: 0.75rem !important;
+        padding: 0 !important;
     }
 
     :global(.leaflet-popup-content) {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    :global(.leaflet-popup-content b) {
-        color: #fff;
-        text-align: center;
-        font-family: Obviously;
-        font-size: 1.5rem;
-        font-style: normal;
-        font-weight: 560;
-        line-height: normal;
-    }
-
-    :global(.leaflet-popup-content i) {
-        color: var(--White, #f7fcfd);
-        font-family: Obviously;
-        font-size: 2.5rem;
-        font-style: normal;
-        font-weight: 450;
-        height: 3.625rem;
-        justify-content: center;
-        background-color: #ff6249;
-        padding-left: 2rem;
-        padding-right: 2rem;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     :global(.leaflet-popup-tip) {
-        background-color: #1b1b1b;
-    }
-
-    :global(.route-button) {
-        color: var(--Black, #1b1b1b);
-        font-family: Roboto;
-        font-size: 1.25rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 150%; /* 1.875rem */
-        text-decoration: none;
-
-        display: flex;
-        padding: 0.3125rem 0.9375rem;
-        justify-content: center;
-        align-items: center;
-        gap: 0.625rem;
-        background-color: #d4f75f;
-        outline: 5px solid #d4f75f;
-        border: 1.5px solid #1b1b1b;
+        background: #1b1b1b !important;
     }
 
     :global(.leaflet-tile) {
         filter: grayscale(100%) contrast(95%) brightness(95%);
     }
-    :global(.leaflet-container a.leaflet-popup-close-button){
-        color: #1b1b1b;
-     }
 </style>
