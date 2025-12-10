@@ -39,7 +39,7 @@ import "leaflet/dist/leaflet.css";
                     let popup = `
                      <div class="card">
                      
-                         <div class="card-header">
+                         <div class="card-place">
                              ${feature.properties.location || ""}
                          </div>
                      
@@ -108,12 +108,12 @@ import "leaflet/dist/leaflet.css";
         font-family: Obviously, sans-serif;
     }
 
-    :global(.card-header) {
+    :global(.card-place) {
         background: #ff6249;
         color: white;
         text-align: center;
         font-size: 2.5rem;
-        font-weight: 560;
+        font-weight: 450;
         padding: 0.7rem 0;
     }
 
@@ -131,7 +131,7 @@ import "leaflet/dist/leaflet.css";
 
     :global(.card-title) {
         color: white;
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-weight: 560;
         margin-bottom: 1rem;
     }

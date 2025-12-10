@@ -68,7 +68,7 @@
 {"type":"Feature","geometry":{"type":"Point","coordinates":[3.2269811,50.8230229,0]},"properties":{"name":"Heilig Hartbeeld - Georges Wasterlain","description":"Datering: 1956"}},
 {"type":"Feature","geometry":{"type":"Point","coordinates":[3.271767,50.8330436,0]},"properties":{"name":"Hélène De Beir - Micheline Verwee","description":"Datering: 2011"}},
 {"type":"Feature","geometry":{"type":"Point","coordinates":[3.2674485,50.8283228,0]},"properties":{"name":"Het laatste begijntje - Renée Gerard","description":"Datering: 2001"}},
-{"type":"Feature","geometry":{"type":"Point","coordinates":[3.2635606,50.7681635,0]},"properties":{"name":"Ik leid de weg","maker": "Analucia Moreno Concha","description":"Datering: 2023", "featured": true, "location": "Rollegem"}, "image": "/testingsKPR/ileadtheway.png"},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[3.2635606,50.7681635,0]},"properties":{"name":"Ik leid de weg","maker": "Analucia Moreno Concha","description":"Datering: 2023", "featured": true, "location": "Rollegem", "image": "/testingsKPR/ileadtheway.png"}},
 {"type":"Feature","geometry":{"type":"Point","coordinates":[3.2652994,50.8258099,0]},"properties":{"name":"Jan Palfijn - Thomas Vançotte","description":"Datering: 1889"}},
 {"type":"Feature","geometry":{"type":"Point","coordinates":[3.2675751,50.8280436,0]},"properties":{"name":"Johanna van Constantinopel - Valère Dupont","description":"Datering: 1891"}},
 {"type":"Feature","geometry":{"type":"Point","coordinates":[3.2669874,50.8304609,0]},"properties":{"name":"Johannes Nepomucenus - Koos van der Kaaij / Georges Vandevoorde (recplica)","description":"Datering: 1922 (replica 1960)"}},
