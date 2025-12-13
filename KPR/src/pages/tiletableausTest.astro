@@ -4,7 +4,6 @@ import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import tile from "../assets/tiletableau.png";
-import Map from "../components/Map.astro";
 ---
 
 <Layout>
@@ -20,6 +19,8 @@ import Map from "../components/Map.astro";
                     alt="Tile tableau from Aalbeke"
                 />
                 <p class="start__cta">Shake the labels off</p>
+
+                <div class="corner-square"></div>
             </div>
         </div>
 
@@ -29,8 +30,6 @@ import Map from "../components/Map.astro";
                 What is hiding behind the labels of Tile Tableaus?
             </p>
         </div>
-
-        <div class="corner-square" id="cornerSquare"></div>
     </div>
 </Layout>
 
@@ -52,10 +51,10 @@ import Map from "../components/Map.astro";
     .peel-container {
         position: relative;
         width: 100%;
-        min-height: 100vh;
+        height: 100vh; /* only viewport height */
+        overflow: hidden; /* prevent actual scrolling */
         background: var(--primary-color);
         perspective: 1500px;
-        overflow: hidden;
     }
 
     .content {
@@ -77,48 +76,25 @@ import Map from "../components/Map.astro";
         position: absolute;
         inset: 0;
         z-index: 30;
-        pointer-events: none;
         transform-style: preserve-3d;
     }
 
     .peel-fold {
-        position: absolute;
-        inset: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-
         background: var(--black);
-
         transform-origin: bottom right;
-        pointer-events: none;
         z-index: 30;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: flex-start; 
+        justify-content: flex-start;
         padding-top: 4rem;
-
         backface-visibility: hidden;
         will-change: transform;
-    }
-
-    .corner-square {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 5rem;
-        height: 5rem;
-        z-index: 50;
-        cursor: pointer;
-        pointer-events: auto;
-        background: linear-gradient(
-            to top left,
-            var(--primary-color) 50%,
-            var(--secondary-color) 50%
-        );
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
 
     .peel-fold::after {
@@ -133,16 +109,24 @@ import Map from "../components/Map.astro";
         transform: translateZ(-1px);
     }
 
-    .content {
-        z-index: 1;
-    }
-
-    .peel-rect,
-    .peel-fold {
-        z-index: 20;
-    }
-
     .corner-square {
+        position: absolute;
+        bottom: 0; /* move to bottom */
+        right: 0; /* keep right-aligned */
+        width: 5rem;
+        height: 5rem;
+        background: linear-gradient(
+            to top left,
+            var(--primary-color) 50%,
+            var(--secondary-color) 50%
+        );
+        clip-path: polygon(100% 0, 0 100%, 100% 100%);
+        transform-origin: bottom right;
+        pointer-events: none;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
         z-index: 999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 </style>

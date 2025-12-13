@@ -1,52 +1,53 @@
-
 import gsap from "gsap";
 
 document.addEventListener("DOMContentLoaded", () => {
   const fold = document.querySelector(".peel-fold");
-  const rect = document.querySelector(".peel-rect");
-  const corner = document.getElementById("cornerSquare");
+  const front = document.querySelector(".corner-square");
+  const back = document.querySelector(".corner-square-back");
 
-  let isOpen = false;
+  // Timeline controlling both
+  const tl = gsap.timeline({ paused: true });
 
-  // initial state
-  gsap.set(fold, {
-    rotateY: 0,
-  rotateX: 0,
-  xPercent: 0,
-  yPercent: 0,
-  transformOrigin: "bottom right",
-  });
+  // Peel front face
+  tl.to(fold, {
+    rotateY: -95,
+    rotateX: 18,
+    ease: "none"
+  }, 0);
 
-  corner.addEventListener("click", (e) => {
-    e.stopPropagation();
-  isOpen = !isOpen;
+  // Front square rotate + darken shadow
+  tl.to(front, {
+    rotateZ: 25,
+    x: -15,
+    y: -15,
+    boxShadow: "10px 10px 30px rgba(0,0,0,0.3)"
+  }, 0);
 
-  if (isOpen) {
-    gsap.to(fold, {
-      rotateY: -95,
-      rotateX: 18,
-      xPercent: 60,
-      yPercent: -110,
-      duration: 0.95,
-      ease: "power3.out",
-      onStart: () => (rect.style.pointerEvents = "none"),
-      onComplete: () => (rect.style.pointerEvents = "none"),
-    });
-    } else {
-    gsap.to(fold, {
-      rotateY: 0,
-      rotateX: 0,
-      xPercent: 0,
-      yPercent: 0,
-      duration: 0.8,
-      ease: "power3.inOut",
-      onStart: () => (rect.style.pointerEvents = "auto"),
-    });
-    }
-  });
+  // Back square appear (orange)
+  tl.to(back, {
+    rotateZ: 25,
+    x: -15,
+    y: -15
+  }, 0);
 
-  fold.addEventListener("click", () => {
-    if (isOpen) corner.click();
-  });
+  let progress = 0;
+
+  const updateProgress = (delta) => {
+    progress += delta * 0.001;
+    progress = Math.min(Math.max(progress, 0), 1);
+    tl.progress(progress);
+  };
+
+  window.addEventListener("wheel", (e) => updateProgress(e.deltaY));
+
+  let touchStartY = null;
+  window.addEventListener("touchstart", (e) => touchStartY = e.touches[0].clientY);
+  window.addEventListener("touchmove", (e) => {
+    if (touchStartY === null) return;
+    const delta = touchStartY - e.touches[0].clientY;
+    updateProgress(delta);
+    touchStartY = e.touches[0].clientY;
+    e.preventDefault();
+  }, { passive: false });
+
 });
-
