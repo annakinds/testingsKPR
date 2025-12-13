@@ -1,0 +1,33 @@
+body {
+    background-color: blueviolet;
+}
+
+#mask {
+    animation-duration: 10s;
+    animation-name: slide-in;
+}
+
+#flap {
+    animation-duration: 10s;
+    animation-name: slide-in2;
+}
+
+@keyframes slide-in {
+    from {
+        translate: 0 0;
+    }
+
+    to {
+        translate: 250px -250px;
+    }
+}
+
+@keyframes slide-in2 {
+    from {
+        translate: 0 0;
+    }
+
+    to {
+        translate: 500px -500px;
+    }
+}
