@@ -2,32 +2,55 @@ body {
     background-color: blueviolet;
 }
 
+
+
+#flap_group {
+    animation-duration: 3s;
+    animation-name: slide-in-flap;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
 #mask {
-    animation-duration: 10s;
-    animation-name: slide-in;
+    animation-duration: 3s;
+    animation-name: slide-in-mask;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
 }
 
-#flap {
-    animation-duration: 10s;
-    animation-name: slide-in2;
+
+
+
+@keyframes slide-in-mask {
+
+    from {
+        translate: 15px -15px;
+    }
+
+    to {
+        translate: 50px -50px;
+    }
 }
 
-@keyframes slide-in {
+@keyframes slide-in-flap {
+
+    from {
+        translate: 30px -30px;
+    }
+
+    to {
+        translate: 100px -100px;
+    }
+}
+
+@keyframes slide-in3 {
     from {
         translate: 0 0;
     }
 
     to {
-        translate: 250px -250px;
-    }
-}
-
-@keyframes slide-in2 {
-    from {
-        translate: 0 0;
-    }
-
-    to {
-        translate: 500px -500px;
+        translate: -150px 150px;
     }
 }
