@@ -1,0 +1,75 @@
+body {
+    background-color: blueviolet;
+}
+
+#label-isnt:hover, #label-distracted:hover {
+    cursor: pointer;
+}
+
+#flap-isnt {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-isnt;
+    animation-timing-function: ease-in-out;
+}
+
+#label_mask-isnt {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-isnt;
+    animation-timing-function: ease-in-out;
+}
+
+#flap-distracted {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-distracted;
+    animation-timing-function: ease-in-out;
+}
+
+#label_mask-distracted {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-distracted;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-isnt {
+
+    from {
+        translate: 0px 0px;
+    }
+
+    to {
+        translate: -133px 133px;
+    }
+}
+
+@keyframes slide-in-flap-isnt {
+
+    from {
+        translate: 0px 0px;
+    }
+
+    to {
+        translate: -266px 266px;
+    }
+}
+
+@keyframes slide-in-mask-distracted {
+
+    from {
+        translate: 0px 0px;
+    }
+
+    to {
+        translate: -209px 209px;
+    }
+}
+
+@keyframes slide-in-flap-distracted {
+
+    from {
+        translate: 0px 0px;
+    }
+
+    to {
+        translate: -418px 418px;
+    }
+}
