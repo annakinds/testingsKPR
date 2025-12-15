@@ -15,11 +15,32 @@ import "leaflet/dist/leaflet.css";
 
     let selectedMarker = 0;
 
+    function artworkIcon(feature) {
+        const isFeatured = feature.properties.featured;
+        const image = feature.properties.image;
+
+        return L.divIcon({
+            className: "artwork-marker",
+            html: `
+      <div class="artwork-marker-inner ${isFeatured ? "featured" : ""}">
+        <img src="${image || "/testingsKPR/marker__gray.svg"}" class="artwork-thumb" />
+        <div class="artwork-pin"></div>
+      </div>
+    `,
+            iconSize: [220, 160],
+            iconAnchor: [110, 160],
+        });
+    }
+
     fetch("/testingsKPR//data/KPR+Kortrijk.geojson")
         .then((r) => r.json())
         .then((data) => {
             L.geoJSON(data, {
                 pointToLayer: (feature, latlng) => {
+                    if (feature.properties.image) {
+                        return L.marker(latlng, { icon: artworkIcon(feature) });
+                    }
+
                     const isFeatured = feature.properties.featured;
                     const customIcon = L.icon({
                         iconUrl: isFeatured
@@ -31,6 +52,7 @@ import "leaflet/dist/leaflet.css";
                     });
                     return L.marker(latlng, { icon: customIcon });
                 },
+
                 onEachFeature(feature, layer) {
                     layer.feature = feature;
                     const coords = feature.geometry.coordinates;
@@ -64,34 +86,15 @@ import "leaflet/dist/leaflet.css";
                     layer.bindPopup(popup);
 
                     layer.on("click", () => {
-                        if (selectedMarker) {
-                            const isFeatured = feature.properties.featured;
-                            const wasFeatured =
-                                selectedMarker.feature.properties.featured;
-                            selectedMarker.setIcon(
-                                L.icon({
-                                    iconUrl: wasFeatured
-                                        ? "/testingsKPR/marker__yellow.svg"
-                                        : "/testingsKPR/marker__gray.svg",
-                                    iconSize: isFeatured ? [32, 32] : [24, 24],
-                                    iconAnchor: isFeatured
-                                        ? [16, 32]
-                                        : [12, 24],
-                                    popupAnchor: isFeatured
-                                        ? [0, -32]
-                                        : [0, -24],
-                                }),
+                        if (selectedMarker && selectedMarker._iconEl) {
+                            selectedMarker._iconEl.classList.remove(
+                                "is-selected",
                             );
                         }
                         selectedMarker = layer;
-                        layer.setIcon(
-                            L.icon({
-                                iconUrl: "/testingsKPR/marker__orange.svg",
-                                iconSize: [32, 32],
-                                iconAnchor: [16, 32],
-                                popupAnchor: [0, -32],
-                            }),
-                        );
+                        if (layer._iconEl) {
+                            layer._iconEl.classList.add("is-selected");
+                        }
                     });
                 },
             }).addTo(map);
@@ -161,11 +164,31 @@ import "leaflet/dist/leaflet.css";
         padding: 0 !important;
     }
 
-    :global(.leaflet-popup-tip) {
-        background: #1b1b1b !important;
-    }
-
     :global(.leaflet-tile) {
         filter: grayscale(100%) contrast(95%) brightness(95%);
+    }
+
+    :global(.artwork-marker-inner) {
+        position: relative;
+        display: inline-block;
+        transform: translateY(-20px);
+    }
+
+    :global(.artwork-thumb) {
+        width: 100px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 0.5rem;
+    }
+
+    :global(.artwork-pin) {
+        position: absolute;
+        left: 50%;
+        width: 24px;
+        height: 32px;
+        bottom: -10px;
+        transform: translateX(-50%);
+        background: url("/testingsKPR/marker__orange.svg") center/contain
+            no-repeat;
     }
 </style>
