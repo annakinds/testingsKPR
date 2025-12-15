@@ -16,6 +16,7 @@ body {
     animation-duration: 1s;
     animation-name: slide-in-flap-isnt;
     animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 #label_mask-isnt {
@@ -23,27 +24,40 @@ body {
     animation-duration: 1s;
     animation-name: slide-in-mask-isnt;
     animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 @keyframes slide-in-mask-isnt {
 
-    from {
+    0% {
         translate: -10px 10px;
     }
 
-    to {
+    90% {
         translate: -133px 133px;
+        opacity: 100%;
+    }
+
+    100% {
+        translate: -133px 133px;
+        opacity: 0%;
     }
 }
 
 @keyframes slide-in-flap-isnt {
 
-    from {
+    0% {
         translate: -20px 20px;
     }
 
-    to {
+    90% {
         translate: -266px 266px;
+        opacity: 100%;
+    }
+
+    100% {
+        translate: -266px 266px;
+        opacity: 0%;
     }
 }
 
@@ -54,6 +68,7 @@ body {
     animation-duration: 1s;
     animation-name: slide-in-flap-distracted;
     animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 #label_mask-distracted {
@@ -61,27 +76,40 @@ body {
     animation-duration: 1s;
     animation-name: slide-in-mask-distracted;
     animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 @keyframes slide-in-mask-distracted {
 
-    from {
+    0% {
         translate: -10px 10px;
     }
 
-    to {
+    90% {
         translate: -209px 209px;
+        opacity: 100%;
+    }
+
+    100% {
+       translate: -209px 209px; 
+       opacity: 0%;
     }
 }
 
 @keyframes slide-in-flap-distracted {
 
-    from {
+    0% {
         translate: -20px 20px;
     }
 
-    to {
+    90% {
         translate: -418px 418px;
+        opacity: 100%;
+    }
+
+    100% {
+        translate: -418px 418px;
+        opacity: 0%;
     }
 }
 
@@ -92,6 +120,7 @@ body {
     animation-duration: 1s;
     animation-name: slide-in-flap-lazy;
     animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 #label_mask-lazy {
@@ -99,27 +128,40 @@ body {
     animation-duration: 1s;
     animation-name: slide-in-mask-lazy;
     animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 @keyframes slide-in-mask-lazy {
 
-    from {
+    0% {
         translate: -10px 10px;
     }
 
-    to {
+    90% {
         translate: -114.5px 114.5px;
+        opacity: 100%;
+    }
+
+    100% {
+        translate: -114.5px 114.5px;
+        opacity: 0%;
     }
 }
 
 @keyframes slide-in-flap-lazy {
 
-    from {
+    0% {
         translate: -20px 20px;
     }
 
-    to {
+    90% {
         translate: -229px 229px;
+        opacity: 100%;
+    }
+
+    100% {
+        translate: -229px 229px;
+        opacity: 0%;
     }
 }
 
@@ -130,6 +172,7 @@ body {
     animation-duration: 1s;
     animation-name: slide-in-flap-online;
     animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 #label_mask-online {
@@ -137,26 +180,41 @@ body {
     animation-duration: 1s;
     animation-name: slide-in-mask-online;
     animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 }
 
 @keyframes slide-in-mask-online {
 
-    from {
+    0% {
         translate: -10px 10px;
     }
 
-    to {
+    90% {
         translate: -241.5px 241.5px;
+        opacity: 100%;
     }
+
+    100% {
+        translate: -241.5px 241.5px;
+        opacity: 0%;
+    }
+
+
 }
 
 @keyframes slide-in-flap-online {
 
-    from {
+    0% {
         translate: -20px 20px;
     }
 
-    to {
+    90% {
         translate: -483px 483px;
+        opacity: 100%;
+    }
+
+    100% {
+        translate: -483px 483px;
+        opacity: 0%;
     }
 }
