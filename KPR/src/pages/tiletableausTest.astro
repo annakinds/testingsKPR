@@ -13,14 +13,24 @@ import tile from "../assets/tiletableau.png";
                 <h1 class="start__title">
                     What is hiding behind the labels of Tile Tableaus?
                 </h1>
+
                 <Image
                     class="image"
                     src={tile}
                     alt="Tile tableau from Aalbeke"
                 />
-                <p class="start__cta">Shake the labels off</p>
 
-                <div class="corner-square"></div>
+                <div class="sticker-wrapper">
+                    <div class="corner-square"></div>
+
+                    <div class="corner-sticker" id="TileSticker">
+                        <div class="sticker front">
+                            <div class="circle">Scroll to peel me off</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="corner-overlay"></div>
             </div>
         </div>
 
@@ -29,104 +39,152 @@ import tile from "../assets/tiletableau.png";
             <p class="start__title">
                 What is hiding behind the labels of Tile Tableaus?
             </p>
+            <!-- extra page content here -->
         </div>
     </div>
+
+    <style>
+        .start__title {
+            color: var(--white);
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .start__cta {
+            color: var(--white);
+            text-align: center;
+            font-size: 1.25rem;
+            margin-top: 5rem;
+        }
+
+        .peel-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background: var(--primary-color);
+            perspective: 1500px;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 4rem 2rem;
+            color: var(--white);
+            background: var(--primary-color);
+            min-height: 200vh;
+        }
+
+        .image {
+            display: block;
+            max-width: 28rem;
+            width: 90%;
+            margin: 2rem auto;
+            border: 0.5rem solid var(--white);
+        }
+
+        .peel-rect {
+            position: absolute;
+            inset: 0;
+            z-index: 30;
+        }
+
+        .peel-fold {
+            position: fixed;
+            inset: 0;
+            background: var(--black);
+            z-index: 30;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 4rem;
+        }
+
+        .sticker-wrapper {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 10rem;
+            height: 10rem;
+            transform-origin: 100% 100% -60px;
+            transform-style: preserve-3d;
+            pointer-events: none;
+        }
+
+        .corner-sticker {
+            position: absolute;
+            bottom: 4.2rem;
+            right: 4.2rem;
+        }
+
+        .corner-sticker::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: var(--accent-orange);
+        }
+
+        .corner-square {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 8rem;
+            height: 8rem;
+            background: #5b56ff;
+            clip-path: polygon(100% 0, 0 100%, 100% 100%);
+            transform-origin: bottom right;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .corner-sticker {
+            position: absolute;
+            bottom: 4.2rem;
+            right: 4.2rem;
+            width: 7.5rem;
+            height: 7.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .corner-sticker .front {
+            width: 100%;
+            height: 100%;
+            background: #d4f75f;
+            border-radius: 50%;
+            border: 0.18rem solid #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .corner-sticker .front::before {
+            content: "";
+            position: absolute;
+            width: 82%;
+            height: 82%;
+            border-radius: 50%;
+            border: 0.14rem solid #111;
+        }
+
+        .corner-sticker .front .circle {
+            position: relative;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+            max-width: 70%;
+        }
+
+        .corner-overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--accent-orange);
+            pointer-events: none;
+            z-index: 999;
+        }
+    </style>
 </Layout>
-
-<style>
-    .start__title {
-        color: var(--white);
-        font-size: 1.5rem;
-        font-weight: bold;
-        text-align: center;
-    }
-
-    .start__cta {
-        color: var(--white);
-        text-align: center;
-        font-size: 1.25rem;
-        margin-top: 5rem;
-    }
-
-    .peel-container {
-        position: relative;
-        width: 100%;
-        height: 100vh; /* only viewport height */
-        overflow: hidden; /* prevent actual scrolling */
-        background: var(--primary-color);
-        perspective: 1500px;
-    }
-
-    .content {
-        position: relative;
-        z-index: 1;
-        padding: 4rem 2rem;
-        color: var(--white);
-    }
-
-    .image {
-        display: block;
-        max-width: 28rem;
-        width: 90%;
-        margin: 2rem auto;
-        border: 0.5rem solid var(--white);
-    }
-
-    .peel-rect {
-        position: absolute;
-        inset: 0;
-        z-index: 30;
-        transform-style: preserve-3d;
-    }
-
-    .peel-fold {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: var(--black);
-        transform-origin: bottom right;
-        z-index: 30;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding-top: 4rem;
-        backface-visibility: hidden;
-        will-change: transform;
-    }
-
-    .peel-fold::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.03),
-            rgba(0, 0, 0, 0.05)
-        );
-        transform: translateZ(-1px);
-    }
-
-    .corner-square {
-        position: absolute;
-        bottom: 0; /* move to bottom */
-        right: 0; /* keep right-aligned */
-        width: 5rem;
-        height: 5rem;
-        background: linear-gradient(
-            to top left,
-            var(--primary-color) 50%,
-            var(--secondary-color) 50%
-        );
-        clip-path: polygon(100% 0, 0 100%, 100% 100%);
-        transform-origin: bottom right;
-        pointer-events: none;
-        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-        z-index: 999;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-</style>

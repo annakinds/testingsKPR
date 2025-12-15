@@ -1,53 +1,68 @@
 import gsap from "gsap";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const fold = document.querySelector(".peel-fold");
-  const front = document.querySelector(".corner-square");
-  const back = document.querySelector(".corner-square-back");
+  const rect = document.querySelector(".peel-rect");
+  const overlay = document.querySelector(".corner-overlay");
+  if (!rect || !overlay) return;
 
-  // Timeline controlling both
+  document.body.style.overflow = "hidden";
+
   const tl = gsap.timeline({ paused: true });
 
-  // Peel front face
-  tl.to(fold, {
-    rotateY: -95,
-    rotateX: 18,
+  // explicitly set the start shape
+  gsap.set(overlay, {
+    clipPath: "polygon(100% 100%, 100% 80%, 80% 100%)"
+  });
+
+  tl.to(overlay, {
+    clipPath: "polygon(0 0, 100% 0, 100% 100%)",
     ease: "none"
-  }, 0);
+  });
 
-  // Front square rotate + darken shadow
-  tl.to(front, {
-    rotateZ: 25,
-    x: -15,
-    y: -15,
-    boxShadow: "10px 10px 30px rgba(0,0,0,0.3)"
-  }, 0);
 
-  // Back square appear (orange)
-  tl.to(back, {
-    rotateZ: 25,
-    x: -15,
-    y: -15
-  }, 0);
+  tl.eventCallback("onComplete", () => {
+    rect.remove();                     // remove black + orange after animation
+    document.body.style.overflow = "auto";
+    const container = document.querySelector(".peel-container");
+    if (container) container.style.height = "auto";
+  });
 
   let progress = 0;
+  const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
 
   const updateProgress = (delta) => {
-    progress += delta * 0.001;
-    progress = Math.min(Math.max(progress, 0), 1);
+    progress += delta * 0.0003;
+    progress = clamp(progress, 0, 1);
+    console.log("progress", progress);
     tl.progress(progress);
   };
+  
+  tl.eventCallback("onComplete", () => {
+    rect.remove();
+    document.body.style.overflow = "auto";
+    const container = document.querySelector(".peel-container");
+    if (container) container.style.height = "auto";
+  });
 
-  window.addEventListener("wheel", (e) => updateProgress(e.deltaY));
 
-  let touchStartY = null;
-  window.addEventListener("touchstart", (e) => touchStartY = e.touches[0].clientY);
-  window.addEventListener("touchmove", (e) => {
-    if (touchStartY === null) return;
-    const delta = touchStartY - e.touches[0].clientY;
-    updateProgress(delta);
-    touchStartY = e.touches[0].clientY;
+  window.addEventListener("wheel", (e) => {
     e.preventDefault();
+    updateProgress(e.deltaY);
   }, { passive: false });
 
+  let touchStartY = null;
+  window.addEventListener("touchstart", (e) => {
+    touchStartY = e.touches[0].clientY;
+  });
+  window.addEventListener("touchmove", (e) => {
+    if (touchStartY == null) return;
+    const currentY = e.touches[0].clientY;
+    const delta = touchStartY - currentY;
+    updateProgress(delta);
+    touchStartY = currentY;
+    e.preventDefault();
+  }, { passive: false });
+  window.addEventListener("touchend", () => {
+    touchStartY = null;
+  });
 });
