@@ -22,14 +22,14 @@ import "leaflet/dist/leaflet.css";
         return L.divIcon({
             className: "artwork-marker",
             html: `
-      <div class="artwork-marker-inner ${isFeatured ? "featured" : ""} ${isSelected ? "is-selected" : ""}">
-        <img src="${image || "/testingsKPR/marker__gray.svg"}" class="artwork-thumb" />
-        <div class="artwork-pin"></div>
-      </div>
-    `,
-            iconSize: [220, 160],
-            iconAnchor: [110, 160],
-            popupAnchor: [0, -160], // Adjust to point to the pin tip
+          <div class="artwork-marker-inner ${isFeatured ? "featured" : ""} ${isSelected ? "is-selected" : ""}">
+            <img src="${image || "/testingsKPR/marker__gray.svg"}" class="artwork-thumb" />
+            <div class="artwork-pin"></div>
+          </div>
+        `,
+            iconSize: [120, 120], // closer to real content box
+            iconAnchor: [60, 120], // bottom middle = pin tip
+            popupAnchor: [0, -120], // popup above pin
         });
     }
 
@@ -85,7 +85,7 @@ import "leaflet/dist/leaflet.css";
     `;
 
                     const popupOptions = {
-                        offset: L.point(-40, 80),
+                        // offset: L.point(-40, 80),
                         closeButton: true,
                         autoPan: true,
                     };
@@ -156,15 +156,15 @@ import "leaflet/dist/leaflet.css";
     }
 
     :global(.leaflet-popup-content-wrapper) {
-        background: transparent !important;
-        box-shadow: none !important;
-        border-radius: 0.75rem !important;
-        padding: 0 !important;
+        background: transparent;
+        box-shadow: none;
+        border-radius: 0.75rem;
+        padding: 0;
     }
 
     :global(.leaflet-popup-content) {
-        margin: 0 !important;
-        padding: 0 !important;
+        margin: 0;
+        padding: 0;
     }
 
     :global(.leaflet-tile) {
@@ -174,7 +174,6 @@ import "leaflet/dist/leaflet.css";
     :global(.artwork-marker-inner) {
         position: relative;
         display: inline-block;
-        transform: translateY(-20px);
     }
 
     :global(.artwork-thumb) {
@@ -182,6 +181,7 @@ import "leaflet/dist/leaflet.css";
         height: 80px;
         object-fit: cover;
         border-radius: 0.5rem;
+        margin-bottom: 20px;
     }
 
     :global(.artwork-pin) {
