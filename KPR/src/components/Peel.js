@@ -12,11 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const peelTransition = () => {
     gsap.to(peelEffect, {
       clipPath: "polygon(100% 100%, 0% 100%, 100% 0%)",
-      duration: 1,
+      duration: 10,
       ease: "power2.out",
-      onComplete: () => {
-        peelEffect.remove(); // Remove the peel layer after animation
-      }
     });
   };
 
