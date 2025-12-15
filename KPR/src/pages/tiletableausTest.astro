@@ -8,7 +8,7 @@ import tile from "../assets/tiletableau.png";
 
 <Layout>
     <div class="peel-container">
-        <div class="peel-rect">
+        <div class="peel-effect">
             <div class="peel-fold">
                 <h1 class="start__title">
                     What is hiding behind the labels of Tile Tableaus?
@@ -30,8 +30,6 @@ import tile from "../assets/tiletableau.png";
                 </div>
             </div>
         </div>
-
-        <div class="corner-overlay"></div>
 
         <div class="content">
             <Image class="image" src={tile} alt="Tile tableau from Aalbeke" />
@@ -57,22 +55,13 @@ import tile from "../assets/tiletableau.png";
             margin-top: 5rem;
         }
 
-        .peel-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-            background: var(--primary-color);
-            perspective: 1500px;
-        }
-
         .content {
             position: relative;
             z-index: 1;
             padding: 4rem 2rem;
             color: var(--white);
             background: var(--primary-color);
-            min-height: 200vh;
+            min-height: 80vh;
         }
 
         .image {
@@ -83,33 +72,14 @@ import tile from "../assets/tiletableau.png";
             border: 0.5rem solid var(--white);
         }
 
-        .peel-rect {
-            position: absolute;
-            inset: 0;
-            z-index: 30;
-        }
-
-        .peel-fold {
-            position: fixed;
-            inset: 0;
-            background: var(--black);
-            z-index: 30;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding-top: 4rem;
-        }
-
         .sticker-wrapper {
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 10rem;
+            width: 12rem;
             height: 10rem;
             transform-origin: 100% 100% -60px;
-            transform-style: preserve-3d;
-            pointer-events: none;
+            line-height: 150%;
         }
 
         .corner-sticker {
@@ -122,19 +92,6 @@ import tile from "../assets/tiletableau.png";
             content: "";
             position: absolute;
             inset: 0;
-        }
-
-        .corner-square {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 8rem;
-            height: 8rem;
-            background: #5b56ff;
-            clip-path: polygon(100% 0, 0 100%, 100% 100%);
-            transform-origin: bottom right;
-            pointer-events: none;
-            z-index: 1;
         }
 
         .corner-sticker {
@@ -160,7 +117,8 @@ import tile from "../assets/tiletableau.png";
             justify-content: center;
         }
 
-        .corner-sticker .front::before {
+        .corner-sticker,
+        .front::before {
             content: "";
             position: absolute;
             width: 82%;
@@ -169,7 +127,8 @@ import tile from "../assets/tiletableau.png";
             border: 0.14rem solid #111;
         }
 
-        .corner-sticker .front .circle {
+        .corner-sticker,
+        .front .circle {
             position: relative;
             font-size: 0.9rem;
             font-weight: 600;
@@ -177,17 +136,14 @@ import tile from "../assets/tiletableau.png";
             max-width: 70%;
         }
 
-        .corner-overlay {
-            position: fixed;
+        .peel-effect {
+            position: absolute;
             inset: 0;
-            width: 100vw;
-            height: 100vh;
-            background: #ff6249;
-            z-index: 9999;
-            pointer-events: none;
-            /* comment these out for the test */
-            /* clip-path: polygon(100% 100%, 100% 80%, 80% 100%);
-  -webkit-clip-path: polygon(100% 100%, 100% 80%, 80% 100%); */
+            background: #000; 
+            width: 100%;
+            height: 100%;
+            z-index: 10;
         }
+
     </style>
 </Layout>
