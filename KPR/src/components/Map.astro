@@ -13,23 +13,30 @@ import "leaflet/dist/leaflet.css";
         attribution: "© OpenStreetMap",
     }).addTo(map);
 
-    let selectedMarker = 0;
+    let selectedMarker = null;
 
-    function artworkIcon(feature) {
+    function artworkIcon(feature, isSelected = false) {
         const isFeatured = feature.properties.featured;
         const image = feature.properties.image;
 
         return L.divIcon({
             className: "artwork-marker",
             html: `
-      <div class="artwork-marker-inner ${isFeatured ? "featured" : ""}">
+      <div class="artwork-marker-inner ${isFeatured ? "featured" : ""} ${isSelected ? "is-selected" : ""}">
         <img src="${image || "/testingsKPR/marker__gray.svg"}" class="artwork-thumb" />
         <div class="artwork-pin"></div>
       </div>
     `,
             iconSize: [220, 160],
             iconAnchor: [110, 160],
+            popupAnchor: [0, -160], // Adjust to point to the pin tip
         });
+    }
+
+    function updateMarkerIcon(layer, isSelected) {
+        const feature = layer.feature;
+        const newIcon = artworkIcon(feature, isSelected);
+        layer.setIcon(newIcon);
     }
 
     fetch("/testingsKPR//data/KPR+Kortrijk.geojson")
@@ -58,43 +65,39 @@ import "leaflet/dist/leaflet.css";
                     const coords = feature.geometry.coordinates;
                     const routeUrl = `https://www.google.com/maps/dir/?api=1&destination=${coords[1]},${coords[0]}`;
 
-                    let popup = `
-                     <div class="card">
-                     
-                         <div class="card-place">
-                             ${feature.properties.location || ""}
-                         </div>
-                     
-                         <div class="card-body">
-                     
-                             ${
-                                 feature.properties.image
-                                     ? `<img src="${feature.properties.image}" class="card-image" />`
-                                     : ""
-                             }
-                     
-                             <div class="card-title">${feature.properties.name}</div>
-                     
-                             <a href="${routeUrl}" target="_blank" class="card-button">
-                                 See route
-                             </a>
-                         </div>
-                     
-                     </div>
-                     `;
+                    const popupHtml = `
+        <div class="card">
+            <div class="card-place">
+                ${feature.properties.location || ""}
+            </div>
+            <div class="card-body">
+                ${
+                    feature.properties.image
+                        ? `<img src="${feature.properties.image}" class="card-image" />`
+                        : ""
+                }
+                <div class="card-title">${feature.properties.name}</div>
+                <a href="${routeUrl}" target="_blank" class="card-button">
+                    See route
+                </a>
+            </div>
+        </div>
+    `;
 
-                    layer.bindPopup(popup);
+                    const popupOptions = {
+                        offset: L.point(-40, 80),
+                        closeButton: true,
+                        autoPan: true,
+                    };
+
+                    layer.bindPopup(popupHtml, popupOptions);
 
                     layer.on("click", () => {
-                        if (selectedMarker && selectedMarker._iconEl) {
-                            selectedMarker._iconEl.classList.remove(
-                                "is-selected",
-                            );
+                        if (selectedMarker) {
+                            updateMarkerIcon(selectedMarker, false);
                         }
                         selectedMarker = layer;
-                        if (layer._iconEl) {
-                            layer._iconEl.classList.add("is-selected");
-                        }
+                        updateMarkerIcon(selectedMarker, true);
                     });
                 },
             }).addTo(map);
@@ -188,7 +191,16 @@ import "leaflet/dist/leaflet.css";
         height: 32px;
         bottom: -10px;
         transform: translateX(-50%);
+        background: url("/testingsKPR/marker__yellow.svg") center/contain
+            no-repeat;
+    }
+
+    :global(.artwork-marker-inner.is-selected .artwork-pin) {
         background: url("/testingsKPR/marker__orange.svg") center/contain
             no-repeat;
+    }
+
+    :global(.leaflet-popup-tip) {
+        background-color: #1b1b1b;
     }
 </style>
