@@ -104,21 +104,21 @@ body {
 @keyframes slide-in-mask-prehistoric {
 
     from {
-        translate: -30px -30px;
+        translate: 0px -10px;
     }
 
     to {
-        translate: -60px -60px;
+        translate: 0px -35px;
     }
 }
 
 @keyframes slide-in-flap-prehistoric {
 
     from {
-        translate: -60px -60px;
+        translate: 0px -20px;
     }
 
     to {
-        translate: -120px -120px;
+        translate: 0px -70px;
     }
 }
