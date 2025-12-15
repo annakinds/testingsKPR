@@ -3,25 +3,24 @@ import gsap from "gsap";
 document.addEventListener("DOMContentLoaded", () => {
   const rect = document.querySelector(".peel-rect");
   const overlay = document.querySelector(".corner-overlay");
-  if (!rect || !overlay) return;
 
   document.body.style.overflow = "hidden";
 
   const tl = gsap.timeline({ paused: true });
 
-  // explicitly set the start shape
   gsap.set(overlay, {
-    clipPath: "polygon(100% 100%, 100% 80%, 80% 100%)"
+    clipPath: "polygon(100% 100%, 100% 80%, 80% 100%)",
+    WebkitClipPath: "polygon(100% 100%, 100% 80%, 80% 100%)"
   });
 
   tl.to(overlay, {
-    clipPath: "polygon(0 0, 100% 0, 100% 100%)",
+    clipPath: "polygon(100% 100%, 100% 0, 0 100%)", 
+    WebkitClipPath: "polygon(100% 100%, 100% 0, 0 100%)",
     ease: "none"
   });
 
-
   tl.eventCallback("onComplete", () => {
-    rect.remove();                     // remove black + orange after animation
+    rect.remove();                     
     document.body.style.overflow = "auto";
     const container = document.querySelector(".peel-container");
     if (container) container.style.height = "auto";

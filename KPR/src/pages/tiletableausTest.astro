@@ -22,17 +22,16 @@ import tile from "../assets/tiletableau.png";
 
                 <div class="sticker-wrapper">
                     <div class="corner-square"></div>
-
                     <div class="corner-sticker" id="TileSticker">
                         <div class="sticker front">
                             <div class="circle">Scroll to peel me off</div>
                         </div>
                     </div>
                 </div>
-
-                <div class="corner-overlay"></div>
             </div>
         </div>
+
+        <div class="corner-overlay"></div>
 
         <div class="content">
             <Image class="image" src={tile} alt="Tile tableau from Aalbeke" />
@@ -123,7 +122,6 @@ import tile from "../assets/tiletableau.png";
             content: "";
             position: absolute;
             inset: 0;
-            background: var(--accent-orange);
         }
 
         .corner-square {
@@ -180,11 +178,16 @@ import tile from "../assets/tiletableau.png";
         }
 
         .corner-overlay {
-            position: absolute;
+            position: fixed;
             inset: 0;
-            background: var(--accent-orange);
+            width: 100vw;
+            height: 100vh;
+            background: #ff6249;
+            z-index: 9999;
             pointer-events: none;
-            z-index: 999;
+            /* comment these out for the test */
+            /* clip-path: polygon(100% 100%, 100% 80%, 80% 100%);
+  -webkit-clip-path: polygon(100% 100%, 100% 80%, 80% 100%); */
         }
     </style>
 </Layout>
