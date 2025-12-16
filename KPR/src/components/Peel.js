@@ -6,16 +6,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const triangleFill = peelContainer.querySelector(".triangle-fill");
   const cornerPeel = peelContainer.querySelector(".corner-peel");
 
-  gsap.set(peelEffect, {
-    clipPath: "polygon(100% 100%, 100% 100%, 100% 100%, 100% 100%)"
-  });
+gsap.set(peelEffect, {
+  clipPath: "polygon(82.5% 82.5%, 100% 80%, 100% 100%, 82.5% 100%)"
+});
 
-  /*   gsap.set(triangleFill, {
-      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%)"
-    }); */
+
 
   const peelTransition = () => {
     const tl = gsap.timeline();
+
     tl.to(peelEffect, {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
       duration: 1,
@@ -30,15 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 0);
 
     tl.to(triangleFill, {
-      wx: "-100%",   
-      y: "-100%",
+      x: "-100%",
+      y: "-250%",
       duration: 1,
-      ease: "power2.out"
-    }, 1);
-
-  
+      ease: "power2.in"
+    }, 0.6);
   };
-
 
   peelContainer.addEventListener("click", peelTransition);
 });
