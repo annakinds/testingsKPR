@@ -29,7 +29,10 @@ import tile from "../assets/tiletableau.png";
                     </div>
                 </div>
             </div>
-            <div class="triangle"></div>
+            <div class="corner-peel">
+                <div class="triangle-mask"></div>
+                <div class="triangle-fill"></div>
+            </div>
         </div>
 
         <div class="content">
@@ -146,10 +149,21 @@ import tile from "../assets/tiletableau.png";
             z-index: 10;
         }
 
-        .triangle {
-            clip-path: "polygon(100% 100%, 0% 0%, 0% 0%)";
+        .corner-peel {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 12rem;
+            height: 10rem;
+            overflow: visible;
+        }
+
+        .triangle-fill {
+            position: absolute;
+            inset: 0;
             background-color: #ff6249;
-            z-index: 200;
+            z-index: 20;
+            clip-path: polygon(100% 100%, 100% 100%, 100% 100%);
         }
     </style>
 </Layout>
