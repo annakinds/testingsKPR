@@ -1,0 +1,123 @@
+body {
+    background-color: rgb(45, 45, 45);
+}
+
+/* idk label */
+
+#flap_group-idk {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-idk;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-idk {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-idk;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-idk {
+
+    from {
+        translate: 10px -10px;
+    }
+
+    to {
+        translate: 30px -30px;
+    }
+}
+
+@keyframes slide-in-flap-idk {
+
+    from {
+        translate: 20px -20px;
+    }
+
+    to {
+        translate: 60px -60px;
+    }
+}
+
+/* zero label */
+
+#flap_group-zero {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-zero;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-zero {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-zero;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-zero {
+
+    from {
+        translate: -40px -40px;
+    }
+
+    to {
+        translate: -60px -60px;
+    }
+}
+
+@keyframes slide-in-flap-zero {
+
+    from {
+        translate: -80px -80px;
+    }
+
+    to {
+        translate: -120px -120px;
+    }
+}
+
+/* metal label */
+
+#flap_group-metal {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-metal;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-metal {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-metal;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-metal {
+
+    from {
+        translate: 10px -10px;
+    }
+
+    to {
+        translate: 30px -30px;
+    }
+}
+
+@keyframes slide-in-flap-metal {
+
+    from {
+        translate: 20px -20px;
+    }
+
+    to {
+        translate: 60px -60px;
+    }
+}
