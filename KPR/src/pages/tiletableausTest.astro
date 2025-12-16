@@ -29,10 +29,11 @@ import tile from "../assets/tiletableau.png";
                     </div>
                 </div>
             </div>
-            <div class="corner-peel">
-                <div class="triangle-mask"></div>
-                <div class="triangle-fill"></div>
-            </div>
+        </div>
+
+        <div class="corner-peel">
+            <div class="triangle-mask"></div>
+            <div class="triangle-fill"></div>
         </div>
 
         <div class="content">
@@ -59,13 +60,17 @@ import tile from "../assets/tiletableau.png";
             margin-top: 5rem;
         }
 
+        .peel-container{
+            overflow: hidden;
+        }
+
         .content {
             position: relative;
             z-index: 1;
             padding: 4rem 2rem;
             color: var(--white);
             background: var(--primary-color);
-            min-height: 80vh;
+            min-height: 70vh;
         }
 
         .image {
@@ -84,6 +89,7 @@ import tile from "../assets/tiletableau.png";
             height: 10rem;
             transform-origin: 100% 100% -60px;
             line-height: 150%;
+            cursor: pointer;
         }
 
         .corner-sticker {
@@ -155,7 +161,7 @@ import tile from "../assets/tiletableau.png";
             right: 0;
             width: 12rem;
             height: 10rem;
-            overflow: visible;
+            margin-right: -1rem;
         }
 
         .triangle-fill {
@@ -163,7 +169,16 @@ import tile from "../assets/tiletableau.png";
             inset: 0;
             background-color: #ff6249;
             z-index: 20;
-            clip-path: polygon(100% 100%, 100% 100%, 100% 100%);
+            clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+            transform: rotate(-90deg);
         }
+
+        .triangle-mask {
+            position: absolute;
+            inset: 0;
+            background-color: #000;
+            z-index: 19;
+            clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+            transform: rotate(-90deg);
     </style>
 </Layout>
