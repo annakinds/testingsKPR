@@ -5,10 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const peelEffect = peelContainer.querySelector(".peel-effect");
   const triangleFill = peelContainer.querySelector(".triangle-fill");
   const cornerPeel = peelContainer.querySelector(".corner-peel");
+  const sticker = document.querySelector(".sticker-wrapper");
 
-gsap.set(peelEffect, {
-  clipPath: "polygon(80% 85%, 100% 85%, 100% 100%, 80% 100%)"
-});
+  gsap.set(peelEffect, {
+    clipPath: "polygon(80% 85%, 100% 85%, 100% 100%, 80% 100%)"
+  });
 
 
 
@@ -37,5 +38,15 @@ gsap.set(peelEffect, {
     }, 0.6);
   };
 
-  peelContainer.addEventListener("click", peelTransition);
+  sticker.addEventListener("click", peelTransition);
+
+  sticker.addEventListener("click", (e) => {
+    if (e.target.closest(".sticker-wrapper") === null) return;
+
+    sticker.classList.add("dismissed");
+
+    setTimeout(() => {
+      if (sticker.parentNode) sticker.parentNode.removeChild(sticker);
+    }, 20);
+  });
 });
