@@ -92,12 +92,6 @@ import tile from "../assets/tiletableau.png";
             cursor: pointer;
         }
 
-        .corner-sticker {
-            position: absolute;
-            bottom: 4.2rem;
-            right: 4.2rem;
-        }
-
         .corner-sticker::before {
             content: "";
             position: absolute;
@@ -169,8 +163,8 @@ import tile from "../assets/tiletableau.png";
             inset: 0;
             background-color: #ff6249;
             z-index: 20;
-            clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
-            transform: rotate(-90deg);
+            clip-path: polygon(0% 0%, 100% 0, 0% 100%);
+           
         }
 
         .triangle-mask {
@@ -178,7 +172,8 @@ import tile from "../assets/tiletableau.png";
             inset: 0;
             background-color: #000;
             z-index: 19;
-            clip-path: polygon(0% 0%, 100% 100%, 0% 100%);
+            clip-path: polygon(0% 100%, 0% 100%, 0% 0%);
             transform: rotate(-90deg);
+        }
     </style>
 </Layout>
