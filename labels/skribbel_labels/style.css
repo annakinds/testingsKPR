@@ -1,0 +1,123 @@
+body {
+    background-color: rgb(45, 45, 45);
+}
+
+/* copy label */
+
+#flap_group-copy {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-copy;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-copy {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-copy;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-copy {
+
+    from {
+        translate: 15px -15px;
+    }
+
+    to {
+        translate: 45px -45px;
+    }
+}
+
+@keyframes slide-in-flap-copy {
+
+    from {
+        translate: 30px -30px;
+    }
+
+    to {
+        translate: 90px -90px;
+    }
+}
+
+/* cute label */
+
+#flap_group-cute {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-cute;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-cute {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-cute;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-cute {
+
+    from {
+        translate: -20px 20px;
+    }
+
+    to {
+        translate: -40px 40px;
+    }
+}
+
+@keyframes slide-in-flap-cute {
+
+    from {
+        translate: -40px 40px;
+    }
+
+    to {
+        translate: -80px 80px;
+    }
+}
+
+/* goofy label */
+
+#flap_group-goofy {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-goofy;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-goofy {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-goofy;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-goofy {
+
+    from {
+        translate: 20px 20px;
+    }
+
+    to {
+        translate: 40px 40px;
+    }
+}
+
+@keyframes slide-in-flap-goofy {
+
+    from {
+        translate: 40px 40px;
+    }
+
+    to {
+        translate: 80px 80px;
+    }
+}

@@ -1,0 +1,123 @@
+body {
+    background-color: rgb(45, 45, 45);
+}
+
+/* prehistoric label */
+
+#flap_group-prehistoric {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-prehistoric;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-prehistoric {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-prehistoric;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-prehistoric {
+
+    from {
+        translate: 0px -10px;
+    }
+
+    to {
+        translate: 0px -35px;
+    }
+}
+
+@keyframes slide-in-flap-prehistoric {
+
+    from {
+        translate: 0px -20px;
+    }
+
+    to {
+        translate: 0px -70px;
+    }
+}
+
+/* boring label */
+
+#flap_group-boring {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-boring;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-boring {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-boring;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-boring {
+
+    from {
+        translate: -10px 10px;
+    }
+
+    to {
+        translate: -30px 30px;
+    }
+}
+
+@keyframes slide-in-flap-boring {
+
+    from {
+        translate: -20px 20px;
+    }
+
+    to {
+        translate: -60px 60px;
+    }
+}
+
+/* depri label */
+
+#flap_group-depri {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-depri;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-depri {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-depri;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-depri {
+
+    from {
+        translate: -10px -10px;
+    }
+
+    to {
+        translate: -30px -30px;
+    }
+}
+
+@keyframes slide-in-flap-depri {
+
+    from {
+        translate: -20px -20px;
+    }
+
+    to {
+        translate: -60px -60px;
+    }
+}

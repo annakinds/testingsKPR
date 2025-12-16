@@ -1,0 +1,123 @@
+body {
+    background-color: rgb(45, 45, 45);
+}
+
+/* off label */
+
+#flap_group-off {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-off;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-off {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-off;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-off {
+
+    from {
+        translate: 10px 10px;
+    }
+
+    to {
+        translate: 30px 30px;
+    }
+}
+
+@keyframes slide-in-flap-off {
+
+    from {
+        translate: 20px 20px;
+    }
+
+    to {
+        translate: 60px 60px;
+    }
+}
+
+/* immature label */
+
+#flap_group-immature {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-immature;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-immature {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-immature;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-immature {
+
+    from {
+        translate: -10px -10px;
+    }
+
+    to {
+        translate: -30px -30px;
+    }
+}
+
+@keyframes slide-in-flap-immature {
+
+    from {
+        translate: -20px -20px;
+    }
+
+    to {
+        translate: -60px -60px;
+    }
+}
+
+/* color label */
+
+#flap_group-color {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-color;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-color {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-color;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-color {
+
+    from {
+        translate: 0px 5px;
+    }
+
+    to {
+        translate: 0px 25px;
+    }
+}
+
+@keyframes slide-in-flap-color {
+
+    from {
+        translate: 0px 10px;
+    }
+
+    to {
+        translate: 0px 50px;
+    }
+}

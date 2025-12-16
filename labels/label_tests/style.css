@@ -1,0 +1,84 @@
+body {
+    background-color: blueviolet;
+}
+
+
+
+#flap_group {
+    animation-duration: 3s;
+    animation-name: slide-in-flap;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask {
+    animation-duration: 3s;
+    animation-name: slide-in-mask;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#flap2 {
+    animation-duration: 3s;
+    animation-name: slide-in-flap2;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask2 {
+    animation-duration: 3s;
+    animation-name: slide-in-mask2;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+
+
+
+@keyframes slide-in-mask {
+
+    from {
+        translate: 15px -15px;
+    }
+
+    to {
+        translate: 45px -45px;
+    }
+}
+
+@keyframes slide-in-flap {
+
+    from {
+        translate: 30px -30px;
+    }
+
+    to {
+        translate: 90px -90px;
+    }
+}
+
+@keyframes slide-in-mask2 {
+
+    from {
+        translate: 60px -60px;
+    }
+
+    to {
+        translate: 90px -90px;
+    }
+}
+
+@keyframes slide-in-flap2 {
+
+    from {
+        translate: 120px -120px;
+    }
+
+    to {
+        translate: 180px -180px;
+    }
+}

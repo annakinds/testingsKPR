@@ -1,0 +1,124 @@
+body {
+    background-color: rgb(45, 45, 45);
+}
+
+/* rest label */
+
+#flap_group-rest {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-rest;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-rest {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-rest;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-rest {
+
+    from {
+        translate: 20px 20px;
+    }
+
+    to {
+        translate: 40px 40px;
+    }
+}
+
+@keyframes slide-in-flap-rest {
+
+    from {
+        translate: 40px 40px;
+    }
+
+    to {
+        translate: 80px 80px;
+
+    }
+}
+
+/* basic label */
+
+#flap_group-basic {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-basic;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-basic {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-basic;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-basic {
+
+    from {
+        translate: -20px 20px;
+    }
+
+    to {
+        translate: -40px 40px;
+    }
+}
+
+@keyframes slide-in-flap-basic {
+
+    from {
+        translate: -40px 40px;
+    }
+
+    to {
+        translate: -80px 80px;
+    }
+}
+
+/* prehistoric label */
+
+#flap_group-prehistoric {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-prehistoric;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-prehistoric {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-prehistoric;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-prehistoric {
+
+    from {
+        translate: 0px -10px;
+    }
+
+    to {
+        translate: 0px -35px;
+    }
+}
+
+@keyframes slide-in-flap-prehistoric {
+
+    from {
+        translate: 0px -20px;
+    }
+
+    to {
+        translate: 0px -70px;
+    }
+}

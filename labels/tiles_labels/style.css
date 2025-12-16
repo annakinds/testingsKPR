@@ -1,0 +1,123 @@
+body {
+    background-color: rgb(45, 45, 45);
+}
+
+/* different label */
+
+#flap_group-different {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-different;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-different {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-different;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-different {
+
+    from {
+        translate: 0px -10px;
+    }
+
+    to {
+        translate: 0px -30px;
+    }
+}
+
+@keyframes slide-in-flap-different {
+
+    from {
+        translate: 0px -20px;
+    }
+
+    to {
+        translate: 0px -60px;
+    }
+}
+
+/* look label */
+
+#flap_group-look {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-look;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-look {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-look;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-look {
+
+    from {
+        translate: -25px -25px;
+    }
+
+    to {
+        translate: -45px -45px;
+    }
+}
+
+@keyframes slide-in-flap-look {
+
+    from {
+        translate: -50px -50px;
+    }
+
+    to {
+        translate: -90px -90px;
+    }
+}
+
+/* nothing label */
+
+#flap_group-nothing {
+    animation-duration: 3s;
+    animation-name: slide-in-flap-nothing;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+#mask-nothing {
+    animation-duration: 3s;
+    animation-name: slide-in-mask-nothing;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in-mask-nothing {
+
+    from {
+        translate: 10px -10px;
+    }
+
+    to {
+        translate: 30px -30px;
+    }
+}
+
+@keyframes slide-in-flap-nothing {
+
+    from {
+        translate: 20px -20px;
+    }
+
+    to {
+        translate: 60px -60px;
+    }
+}

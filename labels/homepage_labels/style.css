@@ -1,0 +1,220 @@
+body {
+    background-color: blueviolet;
+}
+
+#label-isnt:hover,
+#label-distracted:hover,
+#label-lazy:hover {
+    cursor: pointer;
+}
+
+
+/* isnt label */
+
+#flap-isnt {
+    translate: -20px 20px;
+    animation-duration: 1s;
+    animation-name: slide-in-flap-isnt;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+#label_mask-isnt {
+    translate: -10px 10px;
+    animation-duration: 1s;
+    animation-name: slide-in-mask-isnt;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-in-mask-isnt {
+
+    0% {
+        translate: -10px 10px;
+    }
+
+    90% {
+        translate: -133px 133px;
+        opacity: 100%;
+    }
+
+    100% {
+        translate: -133px 133px;
+        opacity: 0%;
+    }
+}
+
+@keyframes slide-in-flap-isnt {
+
+    0% {
+        translate: -20px 20px;
+    }
+
+    90% {
+        translate: -266px 266px;
+        opacity: 100%;
+    }
+
+    100% {
+        translate: -266px 266px;
+        opacity: 0%;
+    }
+}
+
+/* distracted label */
+
+#flap-distracted {
+    translate: -20px 20px;
+    animation-duration: 1s;
+    animation-name: slide-in-flap-distracted;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+#label_mask-distracted {
+    translate: -10px 10px;
+    animation-duration: 1s;
+    animation-name: slide-in-mask-distracted;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-in-mask-distracted {
+
+    0% {
+        translate: -10px 10px;
+    }
+
+    90% {
+        translate: -209px 209px;
+        opacity: 100%;
+    }
+
+    100% {
+       translate: -209px 209px; 
+       opacity: 0%;
+    }
+}
+
+@keyframes slide-in-flap-distracted {
+
+    0% {
+        translate: -20px 20px;
+    }
+
+    90% {
+        translate: -418px 418px;
+        opacity: 100%;
+    }
+
+    100% {
+        translate: -418px 418px;
+        opacity: 0%;
+    }
+}
+
+/* lazy label */
+
+#flap-lazy {
+    translate: -20px 20px;
+    animation-duration: 1s;
+    animation-name: slide-in-flap-lazy;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+#label_mask-lazy {
+    translate: -10px 10px;
+    animation-duration: 1s;
+    animation-name: slide-in-mask-lazy;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-in-mask-lazy {
+
+    0% {
+        translate: -10px 10px;
+    }
+
+    90% {
+        translate: -114.5px 114.5px;
+        opacity: 100%;
+    }
+
+    100% {
+        translate: -114.5px 114.5px;
+        opacity: 0%;
+    }
+}
+
+@keyframes slide-in-flap-lazy {
+
+    0% {
+        translate: -20px 20px;
+    }
+
+    90% {
+        translate: -229px 229px;
+        opacity: 100%;
+    }
+
+    100% {
+        translate: -229px 229px;
+        opacity: 0%;
+    }
+}
+
+/* online label */
+
+#flap-online {
+    translate: -20px 20px;
+    animation-duration: 1s;
+    animation-name: slide-in-flap-online;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+#label_mask-online {
+    translate: -10px 10px;
+    animation-duration: 1s;
+    animation-name: slide-in-mask-online;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slide-in-mask-online {
+
+    0% {
+        translate: -10px 10px;
+    }
+
+    90% {
+        translate: -241.5px 241.5px;
+        opacity: 100%;
+    }
+
+    100% {
+        translate: -241.5px 241.5px;
+        opacity: 0%;
+    }
+
+
+}
+
+@keyframes slide-in-flap-online {
+
+    0% {
+        translate: -20px 20px;
+    }
+
+    90% {
+        translate: -483px 483px;
+        opacity: 100%;
+    }
+
+    100% {
+        translate: -483px 483px;
+        opacity: 0%;
+    }
+}
